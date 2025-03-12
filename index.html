@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>@</title>
+    <script>
+        let string = "mil".split('');
+        let show = "@";
+        let delay = 500;
+
+        function typing() {
+            for(let i=0;i<string.length;i++) {
+                setTimeout(function() {
+                show += string[i];
+                document.title = show;
+                if(i == string.length-1) {
+                    setTimeout(deleteTyping, (delay*string.length) * 2)
+                }
+                }, delay * i);
+            }
+        }
+
+        function deleteTyping() {
+            for(let i=string.length;i>=1;i--) {
+                setTimeout(function() {
+                show = show.slice(0, -1);
+                document.title = show;
+                if(show.length == 1) {
+                    setTimeout(typing, delay*string.length)
+                }
+                }, delay * i);
+            }
+        }
+
+        typing()
+
+    </script>
+</head>
+
+<body>
+    <p class="name">@</p>
+    <div class="music-container">
+        <i class="fa fa-play-circle" id="playButton" onclick="play()" style="font-size:48px;color:white;cursor: pointer;"></i>
+    </div>
+    <br>
+    <div class="box">
+        <div class="input-box" contenteditable="true"></div>
+        <button class="send-btn" onclick="test()">➤</button>
+    </div>
+    <br>
+    <div class="container-wrapper">
+        <div class="container">
+            <div class="icon-container">
+                <img src="mail.png" class="mail" onclick="window.location.href='mailto:admin@leanstore.my.id';" style="height: 45px; width: 45px;">
+                <span class="tooltip">admin@leanstore.my.id</span>
+            </div>
+            <div class="icon-container">
+                <img src="lean.png" class="lean" onclick="window.location.href='https:\/\/discord.gg\/pGC38FJP9J';">
+                <span class="tooltip">discord.gg/leanstore</span>
+            </div>
+        </div>
+    </div>
+    <script src="./css/script.js"></script>
+</body>
